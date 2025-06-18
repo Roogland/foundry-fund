@@ -2,7 +2,7 @@
 pragma solidity ^0.8.18;
 
 // Note: The AggregatorV3Interface might be at a different location than what was in the video!
-import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import {PriceConverter} from "./PriceConverter.sol";
 // import {MockV3Aggregator} from "../mocks/MockV3Aggregator.sol";
 // import {MockV3Aggregator} from "@chainlink/contracts/src/v0.8/tests/MockV3Aggregator.sol";
@@ -16,7 +16,7 @@ contract FundMe {
     address[] private s_funders;
 
     // Could we make this constant?  /* hint: no! We should make it immutable! */
-    address private  immutable  i_owner;
+    address private immutable i_owner;
     uint256 public constant MINIMUM_USD = 5 * 10 ** 18;
     AggregatorV3Interface private s_priceFeed;
 
@@ -78,18 +78,18 @@ contract FundMe {
     receive() external payable {
         fund();
     }
+
     function getAddressToAmountFunded(address fundingAddress) external view returns (uint256) {
         return s_addressToAmountFunded[fundingAddress];
     }
 
-   function getFunders(uint256 index) external view returns (address) {
+    function getFunders(uint256 index) external view returns (address) {
         return s_funders[index];
     }
 
     function getOwner() external view returns (address) {
         return i_owner;
     }
-    
 }
 
 // Concepts we didn't cover yet (will cover in later sections)

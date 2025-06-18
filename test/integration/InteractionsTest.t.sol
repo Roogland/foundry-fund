@@ -10,7 +10,7 @@ import {Test, console} from "forge-std/Test.sol";
 // import {StdCheats} from "forge-std/StdCheats.sol";
 // import {ZkSyncChainChecker} from "lib/foundry-devops/src/ZkSyncChainChecker.sol";
 
-contract InteractionsTest is  Test {
+contract InteractionsTest is Test {
     FundMe public fundMe;
     // HelperConfig public helperConfig;
 
@@ -25,12 +25,12 @@ contract InteractionsTest is  Test {
     // uint256 public constant SEND_VALUE = 1000000000000000000;
 
     function setUp() external {
-            DeployFundMe deploy = new DeployFundMe();
-            fundMe = deploy.run();
-         vm.deal(USER, STARTING_USER_BALANCE);
+        DeployFundMe deploy = new DeployFundMe();
+        fundMe = deploy.run();
+        vm.deal(USER, STARTING_USER_BALANCE);
     }
 
-    function testUserCanFund() public  {
+    function testUserCanFund() public {
         uint256 preUserBalance = address(USER).balance;
         uint256 preOwnerBalance = address(fundMe.getOwner()).balance;
         uint256 originalFundMeBalance = address(fundMe).balance;
